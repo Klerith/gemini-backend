@@ -10,6 +10,8 @@ import { chatPromptStreamUseCase } from './use-cases/chat-prompt-stream.use-case
 export class GeminiService {
   private ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
+  // todo: mantener en memoria el historial
+
   async basicPrompt(basicPromptDto: BasicPromptDto) {
     return basicPromptUseCase(this.ai, basicPromptDto);
   }
