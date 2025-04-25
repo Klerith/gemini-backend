@@ -3,6 +3,8 @@
 /node_modules
 /build
 
+/public/ai-images/*.png
+
 # Logs
 logs
 *.log
