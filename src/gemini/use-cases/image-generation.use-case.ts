@@ -38,7 +38,9 @@ export const imageGenerationUseCase = async (
   const { prompt, files = [] } = imageGenerationDto;
   const contents: ContentListUnion = [{ text: prompt }];
 
-  const uploadedFiles = await geminiUploadFiles(ai, files);
+  const uploadedFiles = await geminiUploadFiles(ai, files, {
+    transformToPng: true,
+  });
 
   uploadedFiles.forEach((file) => {
     contents.push(createPartFromUri(file.uri ?? '', file.mimeType ?? ''));
