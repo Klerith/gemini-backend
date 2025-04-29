@@ -1,8 +1,10 @@
 import { GoogleGenAI } from '@google/genai';
 import { TriviaQuestionDto } from '../dtos/trivia-question.dto';
 
-export interface PokemonResponse {
-  [pokemonId: string]: string;
+export interface TriviaAnswer {
+  question: string;
+  answers: string[];
+  correct: number;
 }
 
 export const getTriviaQuestionUseCase = async (
@@ -29,7 +31,7 @@ export const getTriviaQuestionUseCase = async (
           "answer 3",
           "answer 4",
          ],
-         correcta: indice del arreglo
+         correct: indice del arreglo
        }
         
         Sólo retorna el objeto JSON, no des explicaciones ni nada más.`,
@@ -38,5 +40,5 @@ export const getTriviaQuestionUseCase = async (
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const jsonResponse = JSON.parse(response.text ?? '{}');
-  return jsonResponse as PokemonResponse;
+  return jsonResponse as TriviaAnswer;
 };
